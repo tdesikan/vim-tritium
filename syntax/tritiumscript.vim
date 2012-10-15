@@ -10,7 +10,7 @@ endif
 
 
 " Comments
-syn keyword tritiumScriptCommentTodo   TODO FIXME XXX TBD HC SJ AF contained
+syn keyword tritiumScriptCommentTodo   TODO FIXME XXX TBD contained
 syn match   tritiumScriptLineComment   "#.*" contains=tritiumScriptCommentTodo
 syn match   tritiumScriptLineComment	 "//.*"
 
@@ -25,19 +25,25 @@ syn region  tritiumScriptStringS	  start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	conta
 syn region  tritiumScriptRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
 
 " Tritium keywords
-syn keyword tritiumScriptDebug          log
-syn keyword tritiumScriptBase           var match with read fetch asset script concat export dump
-syn keyword tritiumScriptNode           select $ text attribute move_here move_to copy_here copy_to
-syn keyword tritiumScriptNode           name remove wrap inner_wrap
-syn keyword tritiumScriptNode           inject_top inject_bottom inject_after inject_before inject_at inject
-syn keyword tritiumScriptNode           insert_top insert_bottom insert_after insert_before insert_at insert
-syn keyword tritiumScriptXMLNode        cdata inner wrap_text_children add_class insert_javascript
-syn keyword tritiumScriptAttribute      remove value name
-syn keyword tritiumScriptText           rewrite set replace xml xhtml html prepend append clear
+syn keyword tritiumScriptBase           attribute attributes asset convert_encoding 
+syn keyword tritiumScriptBase           else export fetch guess_encoding match match_not
+syn keyword tritiumScriptBase           not read regexp rewrite_cookie_domain rewrite_link 
+syn keyword tritiumScriptBase           rewrite_to_proxy rewrite_to_upstream sass var with yield
 
-" Rotor keywords
-syn keyword tritiumScriptRotor          test go select match? nomatch? click type select_option select_option? switch_to_frame
-syn keyword tritiumScriptRotor          switch_to_window optimize_page page_content_changed?
+syn keyword tritiumScriptDebug          bm deprecated dump log this time
+
+syn keyword tritiumScriptNode           $$ $ absolutize add_class cdata copy_here copy_to css dup index 
+syn keyword tritiumScriptNode           inject inject_after inject_at inject_before inject_bottom inject_top 
+syn keyword tritiumScriptNode           inner inner_text inner_wrap insert insert_after insert_at insert_before insert_bottom
+syn keyword tritiumScriptNode           insert_javascript insert_javascript_after insert_javascript_at insert_javascript_before 
+syn keyword tritiumScriptNode           insert_javascript_bottom insert_javascript_top insert_top
+syn keyword tritiumScriptNode           move move_children_to move_here move_to
+syn keyword tritiumScriptNode           name node path position remove remove_text_nodes
+syn keyword tritiumScriptNode           select set text wrap wrap_text_children
+
+syn keyword tritiumScriptText           append capture clear concat downcase equal
+syn keyword tritiumScriptText           html html_doc html_fragment html_fragment_doc
+syn keyword tritiumScriptText           length prepend replace upcase value xml
 
 " TODO: variables enclosed in brackets should be captured
 syn match tritiumScriptVariable         "$\h\w*" display
@@ -62,18 +68,13 @@ hi def link tritiumScriptRegexpString       String
 hi def link tritiumScriptDebug              Debug
 hi def link tritiumScriptBase               Define
 
-hi def link tritiumScriptNode               Function
-hi def link tritiumScriptXMLNode            Function
-hi def link tritiumScriptPositional         Operator
-hi def link tritiumScriptAttribute          Operator
+hi def link tritiumScriptNode               Operator
 hi def link tritiumScriptText               Operator
 
 hi def link tritiumScriptBraces             Function
 hi def link tritiumScriptParens             Function
 hi def link tritiumScriptVariable           Type
 hi def link tritiumScriptInstruction        Type
-
-hi def link tritiumScriptRotor              Type
 
 " Define Type Include
 "
