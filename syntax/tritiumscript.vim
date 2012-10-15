@@ -32,7 +32,7 @@ syn keyword tritiumScriptBase           rewrite_to_proxy rewrite_to_upstream sas
 
 syn keyword tritiumScriptDebug          bm deprecated dump log this time
 
-syn keyword tritiumScriptNode           $$ $ absolutize add_class cdata copy_here copy_to css dup index 
+syn keyword tritiumScriptNode           absolutize add_class cdata copy_here copy_to css dup index 
 syn keyword tritiumScriptNode           inject inject_after inject_at inject_before inject_bottom inject_top 
 syn keyword tritiumScriptNode           inner inner_text inner_wrap insert insert_after insert_at insert_before insert_bottom
 syn keyword tritiumScriptNode           insert_javascript insert_javascript_after insert_javascript_at insert_javascript_before 
@@ -45,12 +45,17 @@ syn keyword tritiumScriptText           append capture clear concat downcase equ
 syn keyword tritiumScriptText           html html_doc html_fragment html_fragment_doc
 syn keyword tritiumScriptText           length prepend replace upcase value xml
 
+" Treat $ and $$ selector keywords specially
+syn match tritiumScriptInstruction      "\$" 
+syn match tritiumScriptInstruction      "\$\$"
+
 " TODO: variables enclosed in brackets should be captured
 syn match tritiumScriptVariable         "$\h\w*" display
-syn match tritiumScriptInstruction      "@\h\w*"  display
+syn match tritiumScriptVariable         "%\h\w*" display
+syn match tritiumScriptInstruction      "@\h\w*" display
 
-syn match   tritiumScriptBraces	   "[{}\[\]]"
-syn match   tritiumScriptParens	   "[()]"
+syn match tritiumScriptBraces	          "[{}\[\]]"
+syn match tritiumScriptParens	          "[()]" 
 
 syn sync fromstart
 syn sync maxlines=100
